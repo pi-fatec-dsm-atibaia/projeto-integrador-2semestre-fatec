@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "Cadastro";
+}
+@model IEnumerable<projeto_itegrador_2semestre_fatec.Models.Curso>
+<div class="text-center">
+    <form asp-action="Index" method="post">
+
+        <label>Nome:</label>
+        <input required name="nome"/>
+
+        <label>Email:</label>
+        <input required name="email" />
+
+        <label>Telefone:</label>
+        <input required name="telefone" />
+
+        <label>RA:</label>
+        <input required name="ra" />
+
+        <label>RG:</label>
+        <input required name="rg" />
+
+        <label>CPF:</label>
+        <input required name="cpf" />
+
+        <label>Curso:</label>
+        <select>
+            @foreach (var curso in Model )
+            {
+                <option value="@curso.id">@curso.nome</option>
+                
+            }
+        </select>
+
+        <label>Semestre:</label>
+        <select required>
+            <option value="1">1º semestre</option>
+            <option value="2">2º semestre</option>
+            <option value="3">3º semestre</option>
+            <option value="4">4º semestre</option>
+            <option value="5">5º semestre</option>
+            <option value="6">6º semestre</option>
+        </select>
+
+        <label>Período:</label>
+        <select required>
+            <option value="matutino">Matutino</option>
+            <option value="vespertino">Vespertino</option>
+            <option value="noturno">Noturno</option>
+        </select>
+
+        <label>Senha:</label>
+        <input required name="senha" />
+
+        <label>Confirme sua senha:</label>
+        <input required name="confirmeSenha" />
+
+        <button type="submit">Enviar dados</button>
+
+    </form>
+    
+</div>
