@@ -1,39 +1,38 @@
 ﻿@{
     ViewData["Title"] = "Cadastro";
 }
-@model IEnumerable<projeto_itegrador_2semestre_fatec.Models.Curso>
+@model projeto_itegrador_2semestre_fatec.Models.CadastroCursoDTO
 <div class="text-center">
     <form asp-action="Index" method="post">
 
         <label>Nome:</label>
-        <input required name="nome"/>
+        <input required asp-for="cadastroAluno.nome"/>
 
         <label>Email:</label>
-        <input required name="email" />
+        <input required asp-for="cadastroAluno.email" />
 
         <label>Telefone:</label>
-        <input required name="telefone" />
+        <input required asp-for="cadastroAluno.telefone" />
 
         <label>RA:</label>
-        <input required name="ra" />
+        <input required asp-for="cadastroAluno.ra" />
 
         <label>RG:</label>
-        <input required name="rg" />
+        <input required asp-for="cadastroAluno.rg" />
 
         <label>CPF:</label>
-        <input required name="cpf" />
+        <input required asp-for="cadastroAluno.cpf" />
 
         <label>Curso:</label>
-        <select>
-            @foreach (var curso in Model )
+        <select asp-for="cadastroAluno.idCurso">
+            @foreach (var curso in Model.curso )
             {
-                <option value="@curso.id">@curso.nome</option>
-                
+                <option value="@curso.id">@curso.nome</option>  
             }
         </select>
 
         <label>Semestre:</label>
-        <select required>
+        <select required asp-for="cadastroAluno.semestre">
             <option value="1">1º semestre</option>
             <option value="2">2º semestre</option>
             <option value="3">3º semestre</option>
@@ -43,20 +42,23 @@
         </select>
 
         <label>Período:</label>
-        <select required>
+        <select required asp-for="cadastroAluno.periodo">
             <option value="matutino">Matutino</option>
             <option value="vespertino">Vespertino</option>
             <option value="noturno">Noturno</option>
         </select>
 
         <label>Senha:</label>
-        <input required name="senha" />
+        <input required asp-for="cadastroAluno.senha" />
 
         <label>Confirme sua senha:</label>
-        <input required name="confirmeSenha" />
+        <input required asp-for="cadastroAluno.confirmeSenha" />
 
         <button type="submit">Enviar dados</button>
 
     </form>
-    
 </div>
+@if (ViewBag.Erro != null)
+{
+    <div class="alert alert-danger">@ViewBag.Erro</div>
+}

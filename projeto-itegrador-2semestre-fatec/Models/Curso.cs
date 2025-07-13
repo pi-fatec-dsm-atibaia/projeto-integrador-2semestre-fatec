@@ -16,7 +16,9 @@ namespace projeto_itegrador_2semestre_fatec.Models
         
         public string periodo { get; set; }
 
-
-
+        public static implicit operator Curso(List<Curso> v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
