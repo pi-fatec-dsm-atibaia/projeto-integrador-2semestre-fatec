@@ -7,7 +7,8 @@ namespace projeto_itegrador_2semestre_fatec.Models
        
         public int id { get; set; }
 
-       
+        public int idCurso { get; set; }
+
         public string ra { get; set; }
 
         public string rg { get; set; }
