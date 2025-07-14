@@ -1,0 +1,118 @@
+.section-rounded {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.titulo {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+#form1 {
+    display: flex;
+    flex-direction: row;
+    gap: 64px;
+    margin: 32px;
+}
+
+#form2 {
+    display: flex;
+    flex-direction: row;
+    gap: 64px;
+    margin-inline: 32px;
+}
+
+#botoes {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    button
+
+{
+    min-width: 500px;
+}
+
+}
+
+
+
+.backbtn-container {
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 05px 32px 16px;
+    button
+
+{
+    img
+
+{
+    transform: rotate(180deg);
+    width: 18px;
+}
+
+text-transform: none;
+}
+}
+
+.perfil {
+    display: flex;
+}
+
+#perfil-text {
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-right: 10px;
+}
+
+@media (max-width: 1000px) {
+    form {
+        padding: 0px 16px;
+    }
+
+    #form1 {
+        flex-direction: column;
+        gap: 10px;
+        margin: 10px 0px;
+    }
+
+    #form2 {
+        flex-direction: column;
+        gap: 10px;
+        margin: 10px 0px;
+    }
+
+    #botoes {
+        margin: 42px 0px;
+        min-width: auto !important;
+    }
+
+    #botao {
+        width: 100%;
+        min-width: auto !important;
+    }
+}
+
+@media (max-width: 350px) {
+    #super-container {
+        padding-inline: 0px;
+        padding-top: 0px;
+    }
+
+    #container-borda {
+        border: none;
+        padding: 0px;
+    }
+
+    .backbtn-container {
+        padding: 32px;
+    }
+}

@@ -2,63 +2,111 @@
     ViewData["Title"] = "Cadastro";
 }
 @model projeto_itegrador_2semestre_fatec.Models.CadastroCursoDTO
-<div class="text-center">
-    <form asp-action="Index" method="post">
+<section class="content-container" id="super-container">
+    <div class="backbtn-container">
+        <button class="Voltar" onclick="changePage('login','index.html')">
+            <img src="../assets/right-arrow.png" alt="seta de voltar">
+            <h1>Voltar</h1>
+        </button>
+    </div>
+    <section class="section-rounded" id="container-borda">
+        <h1 class="titulo">Aluno, faça seu cadastro</h1>
+        <form id="form" asp-action="Index" method="post">
+            <div id="form1">
+                <label class="label-container" for="nome">
+                    Nome
+                    <input type="text" id="nome" onblur="handleField(this)" asp-for="cadastroAluno.nome">
+                    <p id="errorNome"></p>
+                </label>
 
-        <label>Nome:</label>
-        <input required asp-for="cadastroAluno.nome"/>
+                <label class="label-container" for="email">
+                    E-mail:
+                    <input type="email" id="email" onblur="handleField(this)" asp-for="cadastroAluno.email">
+                    <p id="errorEmail"></p>
+                </label>
 
-        <label>Email:</label>
-        <input required asp-for="cadastroAluno.email" />
+                <label class="label-container" for="telefone">
+                    Telefone:
+                    <input type="text" id="telefone" onblur="handleField(this)" asp-for="cadastroAluno.telefone">
+                    <p id="errorTelefone"></p>
+                </label>
+            </div>
 
-        <label>Telefone:</label>
-        <input required asp-for="cadastroAluno.telefone" />
+            <div id="form1">
+                <label class="label-container" for="CPF">
+                    CPF:
+                    <input type="text" id="CPF" onblur="handleField(this)" asp-for="cadastroAluno.cpf">
+                    <p id="errorCPF"></p>
+                </label>
 
-        <label>RA:</label>
-        <input required asp-for="cadastroAluno.ra" />
+                <label class="label-container" for="RA">
+                    RA:
+                    <input type="text" id="RA" onblur="handleField(this)" asp-for="cadastroAluno.ra">
+                    <p id="errorRA"></p>
+                </label>
 
-        <label>RG:</label>
-        <input required asp-for="cadastroAluno.rg" />
+                <label class="label-container" for="RG">
+                    RG:
+                    <input type="text" id="RG" onblur="handleField(this)" asp-for="cadastroAluno.rg">
+                    <p id="errorRG"></p>
+                </label>
+            </div>
 
-        <label>CPF:</label>
-        <input required asp-for="cadastroAluno.cpf" />
+            <div id="form2">
+                <label class="label-container" for="curso">
+                    <select name="curso" id="curso" onblur="handleField(this)" asp-for="cadastroAluno.idCurso">
+                        @foreach (var curso in Model.curso)
+                        {
+                            <option value="@curso.id">@curso.nome</option>
+                        }
+                    </select>
+                    <p id="errorCurso"></p>
+                </label>
 
-        <label>Curso:</label>
-        <select asp-for="cadastroAluno.idCurso">
-            @foreach (var curso in Model.curso )
-            {
-                <option value="@curso.id">@curso.nome</option>  
-            }
-        </select>
+                <label class="label-container" for="semestre">
+                    <select name="semestre" id="semestre" onblur="handleField(this)" asp-for="cadastroAluno.semestre">
+                        <option value="1">1º semestre</option>
+                        <option value="2">2º semestre</option>
+                        <option value="3">3º semestre</option>
+                        <option value="4">4º semestre</option>
+                        <option value="5">5º semestre</option>
+                        <option value="6">6º semestre</option>
+                    </select>
+                    <p id="errorSem"></p>
+                </label>
 
-        <label>Semestre:</label>
-        <select required asp-for="cadastroAluno.semestre">
-            <option value="1">1º semestre</option>
-            <option value="2">2º semestre</option>
-            <option value="3">3º semestre</option>
-            <option value="4">4º semestre</option>
-            <option value="5">5º semestre</option>
-            <option value="6">6º semestre</option>
-        </select>
+                <label class="label-container" for="periodo">
+                    <select name="periodo" id="periodo" onblur="handleField(this)" asp-for="cadastroAluno.periodo">
+                        <option value="matutino">Matutino</option>
+                        <option value="vespertino">Vespertino</option>
+                        <option value="noturno">Noturno</option>
+                    </select>
+                    <p id="errorPer"></p>
+                </label>
+            </div>
 
-        <label>Período:</label>
-        <select required asp-for="cadastroAluno.periodo">
-            <option value="matutino">Matutino</option>
-            <option value="vespertino">Vespertino</option>
-            <option value="noturno">Noturno</option>
-        </select>
+            <div id="form1">
+                <label class="label-container" for="senha">
+                    Senha:
+                    <input type="password" id="senha" onblur="handleField(this)" asp-for="cadastroAluno.senha" />
+                    <p id="errorSenha1"></p>
+                </label>
 
-        <label>Senha:</label>
-        <input required asp-for="cadastroAluno.senha" />
+                <label class="label-container" for="confirme">
+                    Confirme sua senha:
+                    <input type="password" id="confirme" onblur="handleField(this), handleConfirmacao()" asp-for="cadastroAluno.confirmeSenha" />
+                    <p id="errorSenha"></p>
+                </label>
+            </div>
 
-        <label>Confirme sua senha:</label>
-        <input required asp-for="cadastroAluno.confirmeSenha" />
-
-        <button type="submit">Enviar dados</button>
-
-    </form>
-</div>
+            <div id="botoes">
+                <button type="submit" class="button-primary" id="botao" onclick="handleCreateAccount()">CRIAR CONTA</button>
+            </div>
+        </form>
+    </section>
+</section>
 @if (ViewBag.Erro != null)
 {
     <div class="alert alert-danger">@ViewBag.Erro</div>
 }
+

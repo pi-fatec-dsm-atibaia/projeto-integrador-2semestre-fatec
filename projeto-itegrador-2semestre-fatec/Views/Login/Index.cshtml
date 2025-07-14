@@ -1,19 +1,42 @@
 ﻿@{
     ViewData["Title"] = "Login";
 }
-<h2>Login</h2>
+
 <form asp-action="Index" method="post">
-    <div class="text-center">
-        <label>E-mail</label>
-        <input name="email" />
-    </div>
-    <div class="text-center">
-        <label>Senha</label>
-        <input type="password" name="senha" />
-    </div>
-    <button type="submit">Entrar</button>
+        <section class="content-container">
+            <div class="h1-container">
+                <h1>Para continuar, entre em sua conta :)</h1>
+            </div>
+            <section class="section-rounded">
+                <div class="input-login-container">
+                    <label class="label-container" for="email">
+                        E-mail
+                        <input type="email" id="email" name="email" placeholder="email@email.com.br" onblur="handleField(this)">
+                        <p id='errorinput'></p>
+                    </label>
+                    <label class="label-container" for="senha">
+                        Senha
+                        <input type="password" id="senha" name="senha" placeholder="************" onblur="handleField(this)">
+                        <p id='errorinput'></p>
+                    </label>
+                    
+                </div>
+
+                <div class="btn-login-container">
+                    @if (ViewBag.Erro != null)
+                    {
+                        <p id="errorLogin">@ViewBag.Erro</p>
+                    }
+                    <button class="button-primary" type="submit">Entrar</button>
+                    <a class="button-secondary" href="/Cadastro/Index">Criar conta</a>
+                    <!-- <button class="button-ghost">Esqueci minha senha</button> -->
+                </div>
+            </section>
+        </section>
 </form>
-@if (ViewBag.Erro != null)
-{
-    <div class="alert alert-danger">@ViewBag.Erro</div>
-}
+
+
+
+    
+    
+
