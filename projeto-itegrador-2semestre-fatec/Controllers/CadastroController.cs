@@ -38,10 +38,7 @@ namespace projeto_itegrador_2semestre_fatec.Controllers
             {
                 Aluno novoAluno = new Aluno();
                 novoAluno = model.cadastroAluno;
-                Console.WriteLine($"id do curso: {model.ToString()}");
-                Console.WriteLine($"id do curso: {model.cadastroAluno.idCurso}");
-                Console.WriteLine($"id do curso: {novoAluno.idCurso}");
-
+                
                 _context.Aluno.Add(novoAluno);
                 await _context.SaveChangesAsync();
                 return View("Created");
@@ -49,7 +46,6 @@ namespace projeto_itegrador_2semestre_fatec.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine($"Erro ao cadastrar aluno: {ex.Message}");
-                Console.WriteLine($"Erro ao cadastrar aluno: {ex.InnerException}");
                 ViewBag.Erro = "Erro ao cadastrar aluno.";
                 model.curso = _context.Curso.ToList();
                 return View(model);
