@@ -1,13 +1,3 @@
-.section-rounded {
-    max-width: 1000px;
-    margin: auto;
-}
-
-.titulo {
-    text-align: center;
-    margin-bottom: 32px;
-}
-
 #form1 {
     display: flex;
     flex-direction: row;
@@ -30,15 +20,11 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    button
-
-{
-    min-width: 500px;
 }
 
-}
-
-
+    #botoes button {
+        min-width: 500px;
+    }
 
 .backbtn-container {
     max-width: 1000px;
@@ -46,31 +32,18 @@
     display: flex;
     align-items: center;
     text-align: center;
-    padding: 05px 32px 16px;
-    button
-
-{
-    img
-
-{
-    transform: rotate(180deg);
-    width: 18px;
+    padding: 5px 32px 16px;
+    width: 100%;
 }
 
-text-transform: none;
-}
-}
+    .backbtn-container a img {
+        transform: rotate(180deg);
+        width: 18px;
+    }
 
-.perfil {
-    display: flex;
-}
-
-#perfil-text {
-    height: fit-content;
-    align-items: center;
-    justify-content: center;
+.titulo {
     text-align: center;
-    margin-right: 10px;
+    margin-bottom: 32px;
 }
 
 @media (max-width: 1000px) {
@@ -78,13 +51,7 @@ text-transform: none;
         padding: 0px 16px;
     }
 
-    #form1 {
-        flex-direction: column;
-        gap: 10px;
-        margin: 10px 0px;
-    }
-
-    #form2 {
+    #form1, #form2 {
         flex-direction: column;
         gap: 10px;
         margin: 10px 0px;
@@ -92,7 +59,6 @@ text-transform: none;
 
     #botoes {
         margin: 42px 0px;
-        min-width: auto !important;
     }
 
     #botao {

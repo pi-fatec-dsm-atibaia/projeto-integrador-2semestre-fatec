@@ -4,10 +4,10 @@
 @model projeto_itegrador_2semestre_fatec.Models.CadastroCursoDTO
 <section class="content-container" id="super-container">
     <div class="backbtn-container">
-        <button class="Voltar" onclick="changePage('login','index.html')">
-            <img src="../assets/right-arrow.png" alt="seta de voltar">
+        <a class="Voltar button-anchor" href="/Login/Index">
+            <img src="~/assets/right-arrow.png" alt="seta de voltar">
             <h1>Voltar</h1>
-        </button>
+        </a>
     </div>
     <section class="section-rounded" id="container-borda">
         <h1 class="titulo">Aluno, faça seu cadastro</h1>
@@ -54,6 +54,7 @@
 
             <div id="form2">
                 <label class="label-container" for="curso">
+                    Curso:
                     <select name="curso" id="curso" onblur="handleField(this)" asp-for="cadastroAluno.idCurso">
                         @foreach (var curso in Model.curso)
                         {
@@ -64,6 +65,7 @@
                 </label>
 
                 <label class="label-container" for="semestre">
+                    Semestre:
                     <select name="semestre" id="semestre" onblur="handleField(this)" asp-for="cadastroAluno.semestre">
                         <option value="1">1º semestre</option>
                         <option value="2">2º semestre</option>
@@ -76,6 +78,7 @@
                 </label>
 
                 <label class="label-container" for="periodo">
+                    Periodo:
                     <select name="periodo" id="periodo" onblur="handleField(this)" asp-for="cadastroAluno.periodo">
                         <option value="matutino">Matutino</option>
                         <option value="vespertino">Vespertino</option>
