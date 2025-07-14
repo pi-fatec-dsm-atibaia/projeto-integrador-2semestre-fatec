@@ -38,9 +38,7 @@ namespace projeto_itegrador_2semestre_fatec.Controllers
             {
                 Aluno novoAluno = new Aluno();
                 novoAluno = model.cadastroAluno;
-
                 
-
                 _context.Aluno.Add(novoAluno);
                 await _context.SaveChangesAsync();
                 return View("Created");
