@@ -39,12 +39,7 @@ namespace projeto_itegrador_2semestre_fatec.Controllers
                 Aluno novoAluno = new Aluno();
                 novoAluno = model.cadastroAluno;
 
-                var ultimoAluno = await _context.Aluno
-                .OrderByDescending(a => a.id)
-                .FirstOrDefaultAsync();
-
-                int proximoId = (ultimoAluno?.id ?? 0) + 1;
-                novoAluno.id = proximoId;
+                
 
                 _context.Aluno.Add(novoAluno);
                 await _context.SaveChangesAsync();
