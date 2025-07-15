@@ -1,0 +1,97 @@
+﻿@{
+    ViewData["Title"] = "Perfil";
+}
+@model projeto_itegrador_2semestre_fatec.Models.AlunoCursoPerfilDTO
+<main>
+    <section class="content-container">
+        <div class="backbtn-container">
+            <button class="Voltar" onclick="changePage('dashboard-aluno','dashboard-aluno.html')">
+                <img src="../assets/right-arrow.png" alt="seta de voltar" />
+                <h1>Voltar</h1>
+            </button>
+        </div>
+        <section class="section-rounded">
+            <h1 class="title">Perfil</h1>
+            <form action="Index" method="POST" id="profile-form">
+                <div id="inputs-container">
+                    <div class="inputs">
+                        <input type="hidden" asp-for="aluno.id" value="aluno.id" />
+                        <label id="nome" class="label-container" for="nome">
+                            Nome
+                            <input asp-for="aluno.nome" type="text" id="nome" value="aluno.nome" />
+                            <p id="errorNome"></p>
+                        </label>
+
+                        <label id="email" class="label-container" for="email">
+                            E-mail:
+                            <input asp-for="aluno.email" type="email" id="email" value="aluno.email" />
+                            <p id="errorNome"></p>
+                        </label>
+
+                        <label class="label-container" for="CPF">
+                            CPF:
+                            <input asp-for="aluno.cpf" type="text" id="CPF" value="aluno.cpf" />
+                            <p id="errorNome"></p>
+                        </label>
+
+                        <label class="label-container" for="RG">
+                            RG:
+                            <input asp-for="aluno.rg" type="text" id="RG" value="aluno.rg" />
+                            <p id="errorNome"></p>
+                        </label>
+
+                        <label class="label-container" for="RA">
+                            RA:
+                            <input asp-for="aluno.ra" type="text" id="RA" value="aluno.ra" />
+                            <p id="errorNome"></p>
+                        </label>
+
+                        <label class="label-container" for="TEL">
+                            TEL:
+                            <input asp-for="aluno.telefone" type="text" id="TEL" value="aluno.telefone" />
+                            <p id="errorNome"></p>
+                        </label>
+
+                    </div>
+                   
+                   
+                </div>
+
+                <div id="selects-container">
+                    <div class="selects-img-container">
+                        <img id="profile-user"
+                             src="../assets/user.png"
+                             alt=""
+                             srcset="" />
+                    </div>
+
+                    <div class="selects-inputs-container">
+                        <label class="label-container" for="curso">
+                            Curso
+                            <select asp-for="aluno.idCurso">
+                                @foreach (var curso in Model.curso)
+                                {
+                                    if (curso.id == Model.aluno.idCurso)
+                                    {
+                                        <option value="@curso.id" selected>@curso.nome - @curso.id</option>
+                                    }else
+                                    {
+                                    <option value="@curso.id">@curso.nome - @curso.id</option>
+                                    }
+                                }
+                            </select>
+                            <p id="errorNome"></p>
+                        </label>
+                    </div>
+
+                    <div id="button-responsive-blue">
+                        <button type="submit" class="button-primary">Atualizar Dados</button>
+                    </div>
+                </div>
+            </form>
+            <div id="button-responsive">
+                <button class="button-primary">Excluir conta</button>
+            </div>
+        </section>
+    </section>
+</main>

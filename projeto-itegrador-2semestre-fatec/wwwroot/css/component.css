@@ -116,6 +116,23 @@ input, select {
         background-color: #7a0202;
     }
 
+.button-primary-blue {
+    @extend .button-primary;
+    padding: 16px 48px;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    background-color: #0044cc;
+    border-radius: 22px;
+    min-width: 250px;
+}
+
+    .button-primary-azul:blue {
+        background-color: #003399;
+    }
+
+
 .button-secondary {
     padding: 16px 48px;
     color: white;

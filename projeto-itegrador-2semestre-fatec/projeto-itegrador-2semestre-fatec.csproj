@@ -8,6 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\Placeholder.cs" />
+    <Compile Remove="Models\pplaceholder.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Controllers\NewFile.txt" />
+    <None Remove="Models\NewFile.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MySql.Data" Version="9.3.0" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.3" />
   </ItemGroup>

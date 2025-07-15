@@ -20,5 +20,10 @@ namespace projeto_itegrador_2semestre_fatec.Models
         {
             throw new NotImplementedException();
         }
+
+        public static implicit operator List<object>(Curso? v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
