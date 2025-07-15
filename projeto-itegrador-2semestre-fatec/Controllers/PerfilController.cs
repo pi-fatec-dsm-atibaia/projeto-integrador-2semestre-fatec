@@ -26,16 +26,91 @@ namespace projeto_itegrador_2semestre_fatec.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(AlunoCursoPerfilDTO parameters)
+        public IActionResult Index(AlunoCursoPerfilDTO parameters, string senhaAtual, string novaSenha, string confirmarSenha)
         {
+            if (parameters?.aluno == null)
+            {
+                return BadRequest("Dados inválidos.");
+            }
+
             var aluno = _context.Aluno.FirstOrDefault(a => a.id == parameters.aluno.id);
             if (aluno == null)
             {
                 return NotFound("Aluno não encontrado.");
             }
-            _context.Aluno.Update(aluno);
-            _context.SaveChanges();
+
+            aluno.nome = parameters.aluno.nome;
+            aluno.email = parameters.aluno.email;
+            aluno.cpf = parameters.aluno.cpf;
+            aluno.rg = parameters.aluno.rg;
+            aluno.ra = parameters.aluno.ra;
+            aluno.telefone = parameters.aluno.telefone;
+            aluno.idCurso = parameters.aluno.idCurso;
+
+            if (!string.IsNullOrEmpty(senhaAtual) || !string.IsNullOrEmpty(novaSenha) || !string.IsNullOrEmpty(confirmarSenha))
+            {
+                if (string.IsNullOrEmpty(senhaAtual) || string.IsNullOrEmpty(novaSenha) || string.IsNullOrEmpty(confirmarSenha))
+                {
+                    TempData["ErrorMessage"] = "Para alterar a senha, todos os campos de senha devem ser preenchidos.";
+                    return RedirectToAction("Index", new { id = aluno.id });
+                }
+
+                if (aluno.senha != senhaAtual)
+                {
+                    TempData["ErrorMessage"] = "Senha atual incorreta.";
+                    return RedirectToAction("Index", new { id = aluno.id });
+                }
+
+                if (novaSenha != confirmarSenha)
+                {
+                    TempData["ErrorMessage"] = "A nova senha e a confirmação não coincidem.";
+                    return RedirectToAction("Index", new { id = aluno.id });
+                }
+
+                if (novaSenha.Length < 6)
+                {
+                    TempData["ErrorMessage"] = "A nova senha deve ter pelo menos 6 caracteres.";
+                    return RedirectToAction("Index", new { id = aluno.id });
+                }
+
+                aluno.senha = novaSenha;
+            }
+
+            try
+            {
+                _context.Aluno.Update(aluno);
+                _context.SaveChanges();
+                TempData["SuccessMessage"] = "Dados atualizados com sucesso!";
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = "Erro ao atualizar dados: " + ex.Message;
+            }
+
             return RedirectToAction("Index", new { id = aluno.id });
+        }
+
+        [HttpPost]
+        public IActionResult Deletar(int id)
+        {
+            var aluno = _context.Aluno.FirstOrDefault(a => a.id == id);
+            if (aluno == null)
+            {
+                return NotFound("Aluno não encontrado.");
+            }
+
+            try
+            {
+                _context.Aluno.Remove(aluno);
+                _context.SaveChanges();
+                TempData["SuccessMessage"] = "Conta excluída com sucesso!";
+                return RedirectToAction("Index", "Home");
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = "Erro ao excluir conta: " + ex.Message;
+                return RedirectToAction("Index", new { id = id });
+            }
         }
     }
 }

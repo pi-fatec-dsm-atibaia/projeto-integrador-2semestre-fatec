@@ -2,69 +2,98 @@
     ViewData["Title"] = "Perfil";
 }
 @model projeto_itegrador_2semestre_fatec.Models.AlunoCursoPerfilDTO
+
 <main>
     <section class="content-container">
         <div class="backbtn-container">
-            <button class="Voltar" onclick="changePage('dashboard-aluno','dashboard-aluno.html')">
-                <img src="../assets/right-arrow.png" alt="seta de voltar" />
+            <a class="Voltar button-anchor" href="/Login/Index">
+                <img src="~/assets/right-arrow.png" alt="seta de voltar">
                 <h1>Voltar</h1>
-            </button>
+            </a>
         </div>
         <section class="section-rounded">
             <h1 class="title">Perfil</h1>
+            
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success">
+                    @TempData["SuccessMessage"]
+                </div>
+            }
+            
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger">
+                    @TempData["ErrorMessage"]
+                </div>
+            }
+            
             <form action="Index" method="POST" id="profile-form">
                 <div id="inputs-container">
                     <div class="inputs">
-                        <input type="hidden" asp-for="aluno.id" value="aluno.id" />
+                        <input type="hidden" asp-for="aluno.id" value="@Model.aluno.id" />
                         <label id="nome" class="label-container" for="nome">
                             Nome
-                            <input asp-for="aluno.nome" type="text" id="nome" value="aluno.nome" />
+                            <input asp-for="aluno.nome" type="text" id="nome" value="@Model.aluno.nome" />
                             <p id="errorNome"></p>
                         </label>
 
                         <label id="email" class="label-container" for="email">
                             E-mail:
-                            <input asp-for="aluno.email" type="email" id="email" value="aluno.email" />
-                            <p id="errorNome"></p>
+                            <input asp-for="aluno.email" type="email" id="email" value="@Model.aluno.email" />
+                            <p id="errorEmail"></p>
                         </label>
 
                         <label class="label-container" for="CPF">
                             CPF:
-                            <input asp-for="aluno.cpf" type="text" id="CPF" value="aluno.cpf" />
-                            <p id="errorNome"></p>
+                            <input asp-for="aluno.cpf" type="text" id="CPF" value="@Model.aluno.cpf" />
+                            <p id="errorCPF"></p>
                         </label>
 
                         <label class="label-container" for="RG">
                             RG:
-                            <input asp-for="aluno.rg" type="text" id="RG" value="aluno.rg" />
-                            <p id="errorNome"></p>
+                            <input asp-for="aluno.rg" type="text" id="RG" value="@Model.aluno.rg" />
+                            <p id="errorRG"></p>
                         </label>
 
                         <label class="label-container" for="RA">
                             RA:
-                            <input asp-for="aluno.ra" type="text" id="RA" value="aluno.ra" />
-                            <p id="errorNome"></p>
+                            <input asp-for="aluno.ra" type="text" id="RA" value="@Model.aluno.ra" />
+                            <p id="errorRA"></p>
                         </label>
 
                         <label class="label-container" for="TEL">
                             TEL:
-                            <input asp-for="aluno.telefone" type="text" id="TEL" value="aluno.telefone" />
-                            <p id="errorNome"></p>
+                            <input asp-for="aluno.telefone" type="text" id="TEL" value="@Model.aluno.telefone" />
+                            <p id="errorTEL"></p>
                         </label>
 
+                        <div class="password-fields">
+                            <h3>Alterar Senha</h3>
+                            <div class="inputs">
+                                <label class="label-container" for="senhaAtual">
+                                    Senha Atual:
+                                    <input type="password" id="senhaAtual" name="senhaAtual" placeholder="Digite sua senha atual" />
+                                    <p id="errorSenhaAtual"></p>
+                                </label>
+
+                                <label class="label-container" for="novaSenha">
+                                    Nova Senha:
+                                    <input type="password" id="novaSenha" name="novaSenha" placeholder="Digite a nova senha" />
+                                    <p id="errorNovaSenha"></p>
+                                </label>
+
+                                <label class="label-container" for="confirmarSenha">
+                                    Confirmar Nova Senha:
+                                    <input type="password" id="confirmarSenha" name="confirmarSenha" placeholder="Confirme a nova senha" />
+                                    <p id="errorConfirmarSenha"></p>
+                                </label>
+                            </div>
+                        </div>
                     </div>
-                   
-                   
                 </div>
 
                 <div id="selects-container">
-                    <div class="selects-img-container">
-                        <img id="profile-user"
-                             src="../assets/user.png"
-                             alt=""
-                             srcset="" />
-                    </div>
-
                     <div class="selects-inputs-container">
                         <label class="label-container" for="curso">
                             Curso
@@ -80,7 +109,7 @@
                                     }
                                 }
                             </select>
-                            <p id="errorNome"></p>
+                            <p id="errorCurso"></p>
                         </label>
                     </div>
 
@@ -90,7 +119,10 @@
                 </div>
             </form>
             <div id="button-responsive">
-                <button class="button-primary">Excluir conta</button>
+                <form action="Deletar" method="POST" style="display: inline;" onsubmit="return confirm('Tem certeza que deseja excluir sua conta? Esta ação não pode ser desfeita.');">
+                    <input type="hidden" name="id" value="@Model.aluno.id" />
+                    <button type="submit" class="button-primary" style="background-color: #dc3545;">Excluir conta</button>
+                </form>
             </div>
         </section>
     </section>

@@ -7,7 +7,6 @@ namespace projeto_itegrador_2semestre_fatec.Controllers
     {
         private readonly AppDbContext _context;
 
-        
         public LoginController(AppDbContext context)
         {
             _context = context;
@@ -25,13 +24,11 @@ namespace projeto_itegrador_2semestre_fatec.Controllers
                 actualStudent => actualStudent.email == email && actualStudent.senha == senha);
             if (aluno == null)
             {
-                ViewBag.Erro = "Usu·rio ou senha inv·lidos";
+                ViewBag.Erro = "Usu√°rio ou senha inv√°lidos";
                 return View();
             }
-            return View("Logged");
-        }
             
-        
+            return RedirectToAction("Index", "Perfil", new { id = aluno.id });
+        }
     }
-
 }
