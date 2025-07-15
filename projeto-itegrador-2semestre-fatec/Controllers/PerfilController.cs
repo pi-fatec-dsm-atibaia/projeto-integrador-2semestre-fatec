@@ -93,18 +93,20 @@ namespace projeto_itegrador_2semestre_fatec.Controllers
         [HttpPost]
         public IActionResult Deletar(int id)
         {
-            var aluno = _context.Aluno.FirstOrDefault(a => a.id == id);
-            if (aluno == null)
-            {
-                return NotFound("Aluno não encontrado.");
-            }
-
             try
             {
+                var aluno = _context.Aluno.FirstOrDefault(a => a.id == id);
+                if (aluno == null)
+                {
+                    TempData["ErrorMessage"] = "Aluno não encontrado.";
+                    return RedirectToAction("Index", new { id = id });
+                }
+
                 _context.Aluno.Remove(aluno);
-                _context.SaveChanges();
+                var result = _context.SaveChanges();
+
                 TempData["SuccessMessage"] = "Conta excluída com sucesso!";
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Login");
             }
             catch (Exception ex)
             {
