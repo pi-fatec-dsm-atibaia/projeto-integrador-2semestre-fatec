@@ -29,97 +29,100 @@
             }
             
             <form action="Index" method="POST" id="profile-form">
-                <div id="inputs-container">
-                    <div class="inputs">
-                        <input type="hidden" asp-for="aluno.id" value="@Model.aluno.id" />
-                        <label id="nome" class="label-container" for="nome">
-                            Nome
-                            <input asp-for="aluno.nome" type="text" id="nome" value="@Model.aluno.nome" />
-                            <p id="errorNome"></p>
-                        </label>
+                <div class="form-sections">
+                    <div class="section-group">
+                        <h2 class="section-title">Dados Pessoais</h2>
+                        <div class="inputs">
+                            <input type="hidden" asp-for="aluno.id" value="@Model.aluno.id" />
+                            <label id="nome" class="label-container" for="nome">
+                                Nome
+                                <input asp-for="aluno.nome" type="text" id="nome" value="@Model.aluno.nome" />
+                                <p id="errorNome"></p>
+                            </label>
 
-                        <label id="email" class="label-container" for="email">
-                            E-mail:
-                            <input asp-for="aluno.email" type="email" id="email" value="@Model.aluno.email" />
-                            <p id="errorEmail"></p>
-                        </label>
+                            <label id="email" class="label-container" for="email">
+                                E-mail:
+                                <input asp-for="aluno.email" type="email" id="email" value="@Model.aluno.email" />
+                                <p id="errorEmail"></p>
+                            </label>
 
-                        <label class="label-container" for="CPF">
-                            CPF:
-                            <input asp-for="aluno.cpf" type="text" id="CPF" value="@Model.aluno.cpf" />
-                            <p id="errorCPF"></p>
-                        </label>
+                            <label class="label-container" for="CPF">
+                                CPF:
+                                <input asp-for="aluno.cpf" type="text" id="CPF" value="@Model.aluno.cpf" />
+                                <p id="errorCPF"></p>
+                            </label>
 
-                        <label class="label-container" for="RG">
-                            RG:
-                            <input asp-for="aluno.rg" type="text" id="RG" value="@Model.aluno.rg" />
-                            <p id="errorRG"></p>
-                        </label>
+                            <label class="label-container" for="RG">
+                                RG:
+                                <input asp-for="aluno.rg" type="text" id="RG" value="@Model.aluno.rg" />
+                                <p id="errorRG"></p>
+                            </label>
 
-                        <label class="label-container" for="RA">
-                            RA:
-                            <input asp-for="aluno.ra" type="text" id="RA" value="@Model.aluno.ra" />
-                            <p id="errorRA"></p>
-                        </label>
+                            <label class="label-container" for="RA">
+                                RA:
+                                <input asp-for="aluno.ra" type="text" id="RA" value="@Model.aluno.ra" />
+                                <p id="errorRA"></p>
+                            </label>
 
-                        <label class="label-container" for="TEL">
-                            TEL:
-                            <input asp-for="aluno.telefone" type="text" id="TEL" value="@Model.aluno.telefone" />
-                            <p id="errorTEL"></p>
-                        </label>
+                            <label class="label-container" for="TEL">
+                                TEL:
+                                <input asp-for="aluno.telefone" type="text" id="TEL" value="@Model.aluno.telefone" />
+                                <p id="errorTEL"></p>
+                            </label>
+                        </div>
+                    </div>
 
-                        <div class="password-fields">
-                            <h3>Alterar Senha</h3>
-                            <div class="inputs">
-                                <label class="label-container" for="senhaAtual">
-                                    Senha Atual:
-                                    <input type="password" id="senhaAtual" name="senhaAtual" placeholder="Digite sua senha atual" />
-                                    <p id="errorSenhaAtual"></p>
-                                </label>
+                    <div class="section-group">
+                        <h2 class="section-title">Curso</h2>
+                        <div class="inputs">
+                            <label class="label-container" for="curso">
+                                Curso
+                                <select asp-for="aluno.idCurso">
+                                    @foreach (var curso in Model.curso)
+                                    {
+                                        if (curso.id == Model.aluno.idCurso)
+                                        {
+                                            <option value="@curso.id" selected>@curso.nome</option>
+                                        }else
+                                        {
+                                        <option value="@curso.id">@curso.nome - @curso.id</option>
+                                        }
+                                    }
+                                </select>
+                                <p id="errorCurso"></p>
+                            </label>
+                        </div>
+                    </div>
 
-                                <label class="label-container" for="novaSenha">
-                                    Nova Senha:
-                                    <input type="password" id="novaSenha" name="novaSenha" placeholder="Digite a nova senha" />
-                                    <p id="errorNovaSenha"></p>
-                                </label>
+                    <div class="section-group password-section">
+                        <h2 class="section-title">Alterar Senha</h2>
+                        <div class="inputs password-inputs">
+                            <label class="label-container" for="senhaAtual">
+                                Senha Atual:
+                                <input type="password" id="senhaAtual" name="senhaAtual" placeholder="Digite sua senha atual" />
+                                <p id="errorSenhaAtual"></p>
+                            </label>
+                            <label class="label-container" for="novaSenha">
+                                Nova Senha:
+                                <input type="password" id="novaSenha" name="novaSenha" placeholder="Digite a nova senha" />
+                                <p id="errorNovaSenha"></p>
+                            </label>
 
-                                <label class="label-container" for="confirmarSenha">
-                                    Confirmar Nova Senha:
-                                    <input type="password" id="confirmarSenha" name="confirmarSenha" placeholder="Confirme a nova senha" />
-                                    <p id="errorConfirmarSenha"></p>
-                                </label>
-                            </div>
+                            <label class="label-container" for="confirmarSenha">
+                                Confirmar Nova Senha:
+                                <input type="password" id="confirmarSenha" name="confirmarSenha" placeholder="Confirme a nova senha" />
+                                <p id="errorConfirmarSenha"></p>
+                            </label>
                         </div>
                     </div>
                 </div>
 
-                <div id="selects-container">
-                    <div class="selects-inputs-container">
-                        <label class="label-container" for="curso">
-                            Curso
-                            <select asp-for="aluno.idCurso">
-                                @foreach (var curso in Model.curso)
-                                {
-                                    if (curso.id == Model.aluno.idCurso)
-                                    {
-                                        <option value="@curso.id" selected>@curso.nome - @curso.id</option>
-                                    }else
-                                    {
-                                    <option value="@curso.id">@curso.nome - @curso.id</option>
-                                    }
-                                }
-                            </select>
-                            <p id="errorCurso"></p>
-                        </label>
-                    </div>
-
-                    <div id="button-responsive-blue">
-                        <button type="submit" class="button-primary">Atualizar Dados</button>
-                    </div>
+                <div id="button-responsive-blue">
+                    <button type="submit" class="button-primary">Atualizar Dados</button>
                 </div>
             </form>
             <div id="button-responsive">
-                <form action="Deletar" method="POST" style="display: inline;" onsubmit="return confirm('Tem certeza que deseja excluir sua conta? Esta ação não pode ser desfeita.');">
+                <form action="/Perfil/Deletar" method="POST" style="display: inline;" onsubmit="return confirm('Tem certeza que deseja excluir sua conta? Esta ação não pode ser desfeita.');">
                     <input type="hidden" name="id" value="@Model.aluno.id" />
                     <button type="submit" class="button-primary" style="background-color: #dc3545;">Excluir conta</button>
                 </form>
