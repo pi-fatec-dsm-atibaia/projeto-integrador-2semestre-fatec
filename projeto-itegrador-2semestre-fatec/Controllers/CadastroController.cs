@@ -9,7 +9,6 @@ namespace projeto_itegrador_2semestre_fatec.Controllers
     {
         private readonly AppDbContext _context;
 
-
         public CadastroController(AppDbContext context)
         {
             _context = context;
@@ -29,7 +28,7 @@ namespace projeto_itegrador_2semestre_fatec.Controllers
         {
             if (model.cadastroAluno.senha != model.cadastroAluno.confirmeSenha)
             {
-                ViewBag.Erro = "As senhas n„o coincidem.";
+                ViewBag.Erro = "As senhas n√£o coincidem.";
                 model.curso = _context.Curso.ToList();
                 return View(model);
             }
@@ -41,7 +40,8 @@ namespace projeto_itegrador_2semestre_fatec.Controllers
                 
                 _context.Aluno.Add(novoAluno);
                 await _context.SaveChangesAsync();
-                return View("Created");
+                
+                return RedirectToAction("Index", "Perfil", new { id = novoAluno.id });
             }
             catch (Exception ex)
             {

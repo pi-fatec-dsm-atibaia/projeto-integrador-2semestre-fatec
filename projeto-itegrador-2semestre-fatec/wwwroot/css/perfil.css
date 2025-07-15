@@ -1,0 +1,321 @@
+.section-rounded {
+    max-width: 1000px;
+    margin: auto;
+    border: 2px black solid;
+    border-radius: 12px;
+    padding: 30px;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+}
+
+.alert {
+    margin-bottom: 25px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    border-left: 4px solid;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #28a745;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #dc3545;
+}
+
+#profile-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0;
+    gap: 60px;
+}
+
+#inputs-container, #selects-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.inputs {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#selects-container {
+    gap: 30px;
+}
+
+.selects-inputs-container {
+    width: 100%;
+}
+
+.password-fields {
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 2px solid #e0e0e0;
+}
+
+.password-fields h3 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.password-fields .inputs {
+    gap: 15px;
+}
+
+#button-responsive-blue {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#button-responsive-blue button {
+    min-width: 300px;
+    padding: 16px 32px;
+    font-size: 16px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+#button-responsive-blue button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#button-responsive {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+#button-responsive button {
+    min-width: 300px;
+    padding: 16px 32px;
+    font-size: 16px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+#button-responsive button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.backbtn-container {
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 10px 32px 20px;
+}
+
+.backbtn-container a {
+    display: flex;
+    align-items: center;
+    text-transform: none;
+    background-color: transparent;
+    border: none;
+    gap: 10px;
+    color: #666;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.backbtn-container a:hover {
+    color: #b20000;
+}
+
+.backbtn-container a img {
+    transform: rotate(180deg);
+    width: 20px;
+    transition: transform 0.3s ease;
+}
+
+.backbtn-container a:hover img {
+    transform: rotate(180deg) translateX(-3px);
+}
+
+.label-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.label-container label {
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+}
+
+.label-container input,
+.label-container select {
+    border: 2px solid #e0e0e0;
+    background-color: white;
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.label-container input:focus,
+.label-container select:focus {
+    outline: none;
+    border-color: #b20000;
+    box-shadow: 0 0 0 3px rgba(178, 0, 0, 0.1);
+    transform: translateY(-1px);
+}
+
+.label-container input::placeholder {
+    color: #999;
+}
+
+.label-container p {
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 4px;
+    min-height: 16px;
+    font-weight: 500;
+}
+
+@media (max-width: 1000px) {
+    .backbtn-container {
+        margin-top: 20px;
+        padding-left: 8px;
+        padding-right: 0;
+    }
+
+    .content-container {
+        padding: 20px !important;
+    }
+
+    .section-rounded {
+        border: none !important;
+        padding: 20px !important;
+        box-shadow: none;
+    }
+
+    #profile-form {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 0;
+    }
+
+    #inputs-container, #selects-container {
+        align-items: flex-start;
+    }
+
+    #button-responsive-blue {
+        display: none;
+    }
+
+    #selects-container select {
+        width: 100%;
+        min-width: 0;
+    }
+
+    #selects-container .selects-inputs-container {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+
+    .inputs label {
+        font-size: 14px;
+    }
+
+    #button-responsive {
+        display: block;
+        width: 100%;
+        max-width: 400px;
+        margin: auto;
+    }
+
+    #button-responsive button {
+        width: 100%;
+        min-width: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-rounded {
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    #profile-form {
+        gap: 25px;
+    }
+
+    .title {
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
+
+    #button-responsive button {
+        min-width: 0;
+        width: 100%;
+        padding: 14px 20px;
+        font-size: 14px;
+    }
+
+    .inputs label {
+        font-size: 13px;
+    }
+
+    .password-fields {
+        margin-top: 20px;
+        padding-top: 20px;
+    }
+
+    .password-fields h3 {
+        font-size: 16px;
+    }
+
+    .label-container input,
+    .label-container select {
+        padding: 12px 14px;
+        font-size: 13px;
+    }
+}
